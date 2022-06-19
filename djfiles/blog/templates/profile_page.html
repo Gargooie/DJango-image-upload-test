@@ -6,16 +6,16 @@
 </head>
 <body>
     <h2>Привет</h2>
-    {% if request.user.profile.avatar != "False" %}
+    {% if request.user.profile.avatar %}
         <img src="{{ MEDIA_URL }}{{ request.user.profile.avatar }}" width="100" height="100">
+    {% else %}
+        <p>No Image</p>
     {% endif %}
-    11
     <form method="post" action="" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Сохранить изменения</button>
     </form>
-22
     <p>Количество постов - {{ user.profile.posts_count }}</p>
 
     <a href="{% url 'main' %}">Вернуться на главную страницу</a><br>

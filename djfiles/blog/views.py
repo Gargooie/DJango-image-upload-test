@@ -74,7 +74,7 @@ def profile_page_view(request):
                 if request.FILES.get('avatar'):
                     avatar = request.FILES['avatar']
                 else:
-                    avatar = 0
+                    avatar = None
                 profile_obj = Profile.objects.filter(user_id=user).get()
                 profile_obj.avatar = avatar
                 profile_obj.save()

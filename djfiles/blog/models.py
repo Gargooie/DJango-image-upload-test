@@ -25,8 +25,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     about_me = models.TextField(blank=True, verbose_name='Обо мне', null=True)
     posts_count = models.IntegerField(default=0, blank=True)
-    avatar = models.ImageField(upload_to='avatars/', blank=True, verbose_name='Фото профиля', null=True)
-
+    avatar = models.ImageField(upload_to='avatars/', blank=True, verbose_name='Фото профиля', null=True, default='default.png')
+    
     def __str__(self):
         return self.user.username
 
