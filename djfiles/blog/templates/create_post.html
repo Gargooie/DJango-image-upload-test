@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать запись</title>
+</head>
+<body>
+    <h3>Создать новую запись</h3>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form_text.as_p }}
+        {{ form_photo }}
+        <button type="submit" name="hand_post">Сохранить изменения</button>
+    </form>
+
+    <h4>Также можете загрузить файл с записями</h4>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form_file }}
+        <button type="submit" name="file_post">Сохранить изменения</button>
+    </form>
+
+    <a href="{% url 'main' %}">Вернуться на главную страницу</a>
+    <a href="{% url 'profile' %}">Вернуться на страницу профиля</a>
+</body>
+</html>

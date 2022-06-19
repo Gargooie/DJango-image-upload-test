@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр записи</title>
+</head>
+<body>
+
+    <img src="/blog/static/{{ blog_post.author.profile.avatar }}" width="30" height="30"/>
+    <h1 style="display: inline-block">{{ blog_post.author }}</h1>
+
+    <p>{{ blog_post.content }}</p>
+    {% if photos %}
+        {% for photo in photos %}
+            <img src="{{ MEDIA_URL }}{{ photo.photos }}" width="200" height="200">
+        {% endfor %}
+    {% endif %}
+
+    <p>Опубликовано {{ blog_post.created_at }}    Изменено {{ blog_post.updated_at }}</p>
+    <a href="{% url 'main' %}">Вернуться на главную страницу</a>
+</body>
+</html>
