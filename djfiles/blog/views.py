@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
-
+from django.contrib.auth.decorators import login_required
 from .models import BlogPost, Profile, PostPhotosModel
 from .forms import RegisterForm, ProfilePageForm, CreatePostForm, PhotosLoadForm, UploadPostsFile
 
@@ -57,7 +57,7 @@ def account_view(request):
     user = User.objects.get(username=request.user.username)
     return render(request, 'profile_page.html', {"user": user})
 
-
+@login_required
 def profile_page_view(request):
     if request.method == 'POST':
         form = ProfilePageForm(request.POST, request.FILES)
